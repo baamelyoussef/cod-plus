@@ -50,10 +50,10 @@ const Navbar = () => {
 					title="Company"
 					className="inline-flex items-center">
 					<span className="text-xl font-bold tracking-wide uppercase">
-						LOGO.
+						COD+
 					</span>
 				</Link>
-				<ul className="hidden items-center gap-12 lg:flex">
+				{/* <ul className="hidden items-center gap-12 lg:flex">
 					{links.map((link) => (
 						<li key={link.label}>
 							<Link
@@ -65,7 +65,7 @@ const Navbar = () => {
 							</Link>
 						</li>
 					))}
-				</ul>
+				</ul> */}
 				<div className="lg:flex items-center gap-4 hidden">
 					{!user ? (
 						<>
