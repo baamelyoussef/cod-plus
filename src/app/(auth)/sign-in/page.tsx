@@ -1,7 +1,6 @@
 "use client";
 
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
 import {
 	useSessionContext,
 	useSupabaseClient,
@@ -34,7 +33,6 @@ const SignIn = () => {
 							providers={["google"]}
 							magicLink={true}
 							appearance={{
-								theme: ThemeSupa,
 								variables: {
 									default: {
 										colors: {
