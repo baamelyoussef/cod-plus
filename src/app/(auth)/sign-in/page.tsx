@@ -44,7 +44,7 @@ const SignIn = () => {
 									},
 								},
 							}}
-							theme="light"
+							// theme="light"
 						/>
 					</div>
 				</div>
