@@ -5,6 +5,8 @@ import {
   CaretSortIcon,
   ChevronDownIcon,
   DotsHorizontalIcon,
+  MinusIcon,
+  PlusIcon,
 } from "@radix-ui/react-icons"
 import {
   ColumnDef,
@@ -43,6 +45,8 @@ import Link from "next/link"
 import { EyeSVG } from "../svgs/eye-svg"
 
 import moment from "moment";
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/drawer"
+import NewProduct from "./new-product"
 
 
 export type Payment = {
@@ -186,7 +190,11 @@ export function ProductsTable({products}:any) {
         console.log('====================================');
       setData(products)
     }, [products])
-    
+    const [goal, setGoal] = React.useState(350)
+ 
+  function onClick(adjustment: number) {
+    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+  }
   const table = useReactTable({
     data,
     columns,
@@ -223,7 +231,30 @@ export function ProductsTable({products}:any) {
               Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-            <Button className="ml-2">Create New</Button>
+          <Drawer>
+      <DrawerTrigger asChild>
+            <Button className="ml-2" onClick={()=>{
+
+            }}>Create New</Button></DrawerTrigger>
+            <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>List new product</DrawerTitle>
+            <DrawerDescription>Enter the following info to create a new product</DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 pb-0">
+            <NewProduct/>
+            
+          </div>
+          <DrawerFooter>
+            
+            <DrawerClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
           <DropdownMenuContent align="end">
             {table
               .getAllColumns()
